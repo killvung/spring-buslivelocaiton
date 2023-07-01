@@ -24,4 +24,10 @@ class BusLocationServiceTest {
         BusLocationService service = new BusLocationService(null);
         service.parseBusLocations(service.fetchXmlData(apiUrl));
     }
+
+    @Test
+    public void testGetBusLocations(){
+        BusLocationService service = new BusLocationService(null);
+        service.getBusLocations();
+    }
 }

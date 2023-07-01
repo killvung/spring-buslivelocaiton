@@ -26,6 +26,12 @@ public class BusLocationService {
         this.busLocationRepository = busLocationRepository;
     }
 
+    public List<BusLocation> getBusLocations(){
+        String apiUrl = "https://retro.umoiq.com/service/publicXMLFeed?command=vehicleLocations&a=ttc";
+        String xmlData = fetchXmlData(apiUrl);
+        return parseBusLocations(xmlData);
+    }
+
     public void saveBusLocations(List<BusLocation> busLocations) {
         busLocationRepository.saveAll(busLocations);
     }
@@ -70,7 +76,8 @@ public class BusLocationService {
                     secsSinceReport,
                     predictable,
                     heading,
-                    speedKmHr
+                    speedKmHr,
+                    null
             );
             busLocations.add(busLocation);
         }

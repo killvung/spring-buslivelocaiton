@@ -19,6 +19,11 @@ public class BusLocationController {
         this.busLocationService = busLocationService;
     }
 
+    @GetMapping("/")
+    public ResponseEntity<List<BusLocation>> getBusLocations() {
+        return ResponseEntity.ok(busLocationService.getBusLocations());
+    }
+
     @GetMapping("/ingest")
     public ResponseEntity<String> ingestBusLocations() {
         String apiUrl = "https://retro.umoiq.com/service/publicXMLFeed?command=vehicleLocations&a=ttc";
